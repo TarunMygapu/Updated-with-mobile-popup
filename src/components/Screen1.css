@@ -1,0 +1,399 @@
+.main-section {
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+  margin-left: 10px;
+}
+
+.feeheads-container {
+  width: 1260px;
+  height: 60px;
+  background-color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 16px;
+  border-bottom: 1px solid rgba(229, 233, 235, 1);
+}
+
+.title {
+  font-size: 24px;
+  font-size: 40px;
+  color: #1e1e1e;
+}
+
+.button-group {
+  display: flex;
+  gap: 10px;
+}
+
+.action-btn-filter {
+  background-color: rgba(255, 255, 255, 1);
+  width: 92px;
+  height: 32px;
+  color: rgba(37, 44, 50, 1);
+  border: 1px solid rgba(221, 226, 228, 1);
+  border-radius: 6px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+
+}
+
+.action-btn-export {
+  background-color: #fff;
+  width: 92px;
+  height: 32px;
+  color: rgba(37, 44, 50, 1);
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+
+}
+
+.action-btn-addnew {
+  padding: 4px 8px;
+  border: none;
+  background: #3425FF;
+  color: #fff;
+  border-radius: 6px;
+  cursor: pointer;
+  width: 149px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.feeheads-table-container {
+  overflow-x: auto;
+  margin-top: 20px;
+  width: 1270px;
+  color: rgba(132, 145, 154, 1);
+  position: relative;
+  max-height: 530px;
+}
+
+.feeheads-table {
+  width: auto;
+  border-collapse: separate;
+  font-size: 14px;
+  border-spacing: 0;
+}
+
+.feeheads-table td {
+  padding: 8px 12px;
+  text-align: left;
+  white-space: nowrap;
+  border-bottom: 1px solid #E5E9EB;
+  color: #252C32;
+  font-weight: 400px;
+
+}
+
+.feeheads-table th {
+  padding: 8px 12px;
+  text-align: left;
+  white-space: nowrap;
+  border-bottom: 1px solid rgba(229, 233, 235, 1);
+  color: #84919A;
+  font-size: 12px;
+  z-index: 15;
+}
+
+.feeheads-table thead {
+  background-color: white;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.overlay {
+  position: fixed;
+  top: 56px;
+  left: 240px;
+  width: 1200%;
+  height: 884%;
+  background-color: black;
+  z-index: 10;
+}
+
+.form-popup {
+  position: fixed;
+  top: 85px;
+  left: 580px;
+  width: 480px;
+  height: 570px;
+  background: rgba(255, 255, 255, 1);
+  border-radius: 12px;
+  padding: 24px;
+  z-index: 20;
+  gap: 32px;
+}
+
+.form-popup h3 {
+  margin-bottom: 17px;
+  font-weight: 500;
+}
+
+.feeheads-form {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(6, auto);
+  gap: 14px 22px;
+}
+
+.feeheads-form label {
+  display: flex;
+  flex-direction: column;
+  font-size: 13px;
+  color: #333;
+  gap: 4px;
+}
+
+.feeheads-form input {
+  margin-top: 4px;
+  padding: 6px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 13px;
+}
+
+.form-buttons {
+  grid-column: span 2;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 24px;
+}
+
+.cancel-btn,
+.add-btn {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.cancel-btn {
+  background-color: white;
+  border: 1px solid rgba(217, 86, 86, 1);
+  color: rgba(217, 86, 86, 1);
+}
+
+.add-btn {
+  background: #3425FF;
+  color: white;
+  width: 318px;
+  height: 44px;
+  border-radius: 8px;
+}
+
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: #333;
+}
+
+.delete-btn {
+  background-color: white;
+  border: 1px solid rgba(217, 86, 86, 1);
+  color: rgba(217, 86, 86, 1);
+  width: 102px;
+  height: 44px;
+  border-radius: 8px;
+}
+
+.icon-btn {
+  background: none;
+}
+
+.table-row {
+  color: rgba(37, 44, 50, 1);
+  font-weight: 400;
+  font-size: 14px;
+}
+
+.notification-badge {
+  position: absolute;
+  top: 0px;
+  right: 2px;
+  transform: translate(50%, -50%);
+  background-color: red;
+  color: white;
+  border-radius: 50%;
+  padding: 2px 6px;
+}
+
+.sticky-col-sticky-col-1 {
+  position: sticky;
+  left: 0px;
+  z-index: 9;
+  background-color: white;
+}
+
+.table-head {
+  font-size: 12px;
+  font-weight: 600;
+}
+
+@media (max-width: 480px) {
+  .feeheads-container {
+    width: 100%;
+    height: auto;
+    padding: 10px;
+    justify-content: flex-start;
+  }
+
+  .title {
+    font-size: 24px;
+    margin-top: -18px;
+  }
+
+  .button-group {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #FFFFFF;
+    border-top: 1px solid #E5E9EB;
+    padding: 10px;
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+    z-index: 10;
+    box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  .action-btn-filter,
+  .action-btn-export {
+    flex: 1;
+    min-width: 0;
+    border: none;
+    border-radius: 6px;
+  }
+
+  .feeheads-table-container {
+    width: 100%;
+    margin-top: 10px;
+    padding-bottom: 60px;
+    font-size: small;
+    /* overflow-x: auto; */
+  }
+
+  .form-popup {
+    top: 15%;
+    left: 4%;
+    width: 336px;
+    height: 420px;
+    padding: 16px;
+    border-radius: 6px;
+  }
+
+  .overlay {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .input-accountId {
+    width: 120px;
+    height: 44px;
+    border-radius: 8px;
+  }
+
+  .input-accountName {
+    width: 177px;
+    height: 44px;
+    border-radius: 8px;
+
+  }
+
+  .input-accountNumber {
+    width: 120px;
+    height: 44px;
+    border-radius: 8px;
+
+  }
+
+  .input-accountType {
+    width: 177px;
+    height: 44px;
+    border-radius: 8px;
+
+  }
+
+  .input-bankAddress {
+    width: 120px;
+    height: 44px;
+    border-radius: 8px;
+
+  }
+
+  .input-bankBranch,
+  .input-bankName,
+  .input-ifscCode,
+  .input-organizationId,
+  .input-bankBranchSolId,
+  .input-campusId,
+  .input-activeStatus {
+    display: none;
+  }
+
+  .action-btn-addnew {
+    width: 135px;
+    height: 32px;
+  }
+
+  .add-btn {
+    width: 187px;
+    height: 36px;
+    margin-top: 10px;
+
+  }
+
+  .cancel-btn {
+    width: 110px;
+    height: 36px;
+    margin-top: 10px;
+
+  }
+
+  .delete-btn {
+    width: 110px;
+    height: 36px;
+    margin-top: 10px;
+  }
+
+
+  .button-group-hidden {
+    transform: translateY(100%);
+    opacity: 0;
+    transition: transform 0.5s ease, opacity 0.5s ease;
+  }
+.feeheads-form {
+  gap: 16px;
+}
+  .feeheads-form label:has(.input-bankBranch),
+  .feeheads-form label:has(.input-bankName),
+  .feeheads-form label:has(.input-ifscCode),
+  .feeheads-form label:has(.input-organizationId),
+  .feeheads-form label:has(.input-bankBranchSolId),
+  .feeheads-form label:has(.input-campusId),
+  .feeheads-form label:has(.input-activeStatus) {
+    display: none;
+  }
+}

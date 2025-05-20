@@ -1,0 +1,184 @@
+.sidebar-container {
+    background-color: #F6F8F9;
+    width: 240px;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+    overflow-y: auto;
+}
+
+.logodiv {
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    height: 40px;
+}
+
+.logodiv img {
+    width: 159.97531127929688px;
+    height: 38px;
+}
+
+.menu-icon {
+    display: none;
+    margin-left: auto;
+    cursor: pointer;
+}
+
+.menu-icon svg {
+    width: 24px;
+    height: 16px;
+}
+
+.sidebar-content {
+    margin: 10px;
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    gap: 0px;
+    color: rgba(113, 113, 113, 1);
+}
+
+.sidebaritems {
+    margin-bottom: 10px;
+        color: #252C32; 
+
+}
+
+.sidebarbutton {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.2s;
+    height: 28px;
+}
+
+.sidebarbutton:hover {
+    background-color: rgba(215, 237, 255, 1);
+}
+
+.sidebarbutton.selected {
+    background-color: rgba(215, 237, 255, 1);
+    color: rgba(52, 37, 255, 1);
+}
+
+.studenttext {
+    color: rgba(52, 37, 255, 1);
+}
+
+.downicon {
+    padding-top: 5px;
+    margin-left: auto;
+}
+
+.studentdropdown {
+    margin-top: 8px;
+    display: flex;
+    flex-direction: column;
+}
+
+.dropdown-item,
+.dropdown-item-fee {
+    padding-left: 35px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    padding-top: 8px;
+    margin-bottom: 2px;
+    color: #717171;
+}
+
+/* .dropdown-item-fee {
+    color: black;
+} */
+
+.dropdown-item:hover,
+.dropdown-item-fee:hover {
+    color: black;
+}
+
+.side-bottom-items {
+    padding: 15px;
+    margin-top: auto;
+}
+
+.side-bottom-items svg {
+    width: 208px;
+    height: 64px;
+}
+
+@media (max-width: 480px) {
+    .sidebar-container {
+        width: 100%;
+        height: 57px;
+        position: fixed;
+        top: 0;
+        z-index: 9999;
+        border-bottom: 1px solid #E5E9EB;
+    }
+
+    .logodiv {
+        padding: 10px;
+        justify-content: space-between;
+        height: auto;
+    }
+
+    .logodiv img {
+        width: 120px;
+        height: auto;
+    }
+
+    .menu-icon {
+        display: block;
+    }
+
+    .sidebar-content {
+        display: none;
+        position: fixed;
+        top: 57px;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        background-color: #F6F8F9;
+        z-index: 9999;
+        margin: 0;
+        padding: 10px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        overflow-y: auto;
+    }
+
+    .sidebar-content.mobile-open {
+        display: flex;
+        top: 57px;
+        z-index: 20;
+        animation: slideDown 0.3s ease-out forwards;
+    }
+
+    .side-bottom-items {
+        display: flex;
+    }
+
+    .sidebarbutton {
+        font-size: 16px;
+    }
+
+    .studentdropdown {
+        background-color: #fff;
+        border-radius: 6px;
+        padding: 10px 0;
+    }
+}
+
+@keyframes slideDown {
+    from {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}

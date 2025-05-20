@@ -1,0 +1,12 @@
+.app-container {
+    display: flex;
+    flex-direction: row;
+}
+
+@media (max-width: 480px) {
+    .app-container {
+        width: 100%;
+        flex-direction: column;
+        margin-top: 57px;
+    }
+}
