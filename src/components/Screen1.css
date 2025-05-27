@@ -127,17 +127,17 @@
 
 .form-popup {
   position: fixed;
-  top: 85px;
+  top: 100px;
   left: 580px;
   width: 480px;
-  height: 570px;
-  background: rgba(255, 255, 255, 1);
+  height: 660px;
+  background: #FFFFFF;
   border-radius: 12px;
   padding: 24px;
   z-index: 20;
   gap: 32px;
+  border-radius:12px;
 }
-
 .form-popup h3 {
   margin-bottom: 17px;
   font-weight: 500;
@@ -210,7 +210,7 @@
 .delete-btn {
   background-color: white;
   border: 1px solid rgba(217, 86, 86, 1);
-  color: rgba(217, 86, 86, 1);
+  color: #252C32;
   width: 102px;
   height: 44px;
   border-radius: 8px;
@@ -218,6 +218,7 @@
 
 .icon-btn {
   background: none;
+  cursor: pointer;
 }
 
 .table-row {
@@ -346,6 +347,7 @@
   .input-bankBranch,
   .input-bankName,
   .input-ifscCode,
+  .input-micrCode,
   .input-organizationId,
   .input-bankBranchSolId,
   .input-campusId,
@@ -384,12 +386,16 @@
     opacity: 0;
     transition: transform 0.5s ease, opacity 0.5s ease;
   }
+  span{
+    color:#101828
+  }
 .feeheads-form {
   gap: 16px;
 }
   .feeheads-form label:has(.input-bankBranch),
   .feeheads-form label:has(.input-bankName),
   .feeheads-form label:has(.input-ifscCode),
+  .feeheads-form label:has(.input-micrCode),
   .feeheads-form label:has(.input-organizationId),
   .feeheads-form label:has(.input-bankBranchSolId),
   .feeheads-form label:has(.input-campusId),

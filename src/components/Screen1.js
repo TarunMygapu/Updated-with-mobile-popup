@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import './Screen1.css';
 
 const initialFormState = {
@@ -10,280 +11,99 @@ const initialFormState = {
     bankBranch: '',
     bankName: '',
     ifscCode: '',
+    micrCode: '',
     organizationId: '',
     bankBranchSolId: '',
     campusId: '',
     activeStatus: ''
 };
 
-
 const FeeheadsBar = () => {
     const [showForm, setShowForm] = useState(false);
     const [formData, setFormData] = useState(initialFormState);
-    const [tableData, setTableData] = useState([
-        {
-            id: 'Andhra Pradesh',
-            accountId: 'Guntur',
-            accountName: 'Gardens Branch',
-            accountNumber: 'Gardens Branch',
-            accountType: 'Gardens Branch',
-            bankAddress: 'Gardens Branch',
-            bankBranch: 'Gardens Branch',
-            bankName: 'Bank A',
-            ifscCode: 'Andhra Pradesh',
-            organizationId: 'Gardens Branch',
-            bankBranchSolId: 'Gardens Branch',
-            campusId: 'HYD2789191',
-            activeStatus: 'Active'
-        },
-        {
-            id: 'Andhra Pradesh',
-            accountId: 'Guntur',
-            accountName: 'Gardens Branch',
-            accountNumber: 'Gardens Branch',
-            accountType: 'Gardens Branch',
-            bankAddress: 'Gardens Branch',
-            bankBranch: 'Gardens Branch',
-            bankName: 'Bank A',
-            ifscCode: 'Andhra Pradesh',
-            organizationId: 'Gardens Branch',
-            bankBranchSolId: 'Gardens Branch',
-            campusId: 'HYD2789191',
-            activeStatus: 'Active'
-        },
-        {
-            id: 'Andhra Pradesh',
-            accountId: 'Guntur',
-            accountName: 'Gardens Branch',
-            accountNumber: 'Gardens Branch',
-            accountType: 'Gardens Branch',
-            bankAddress: 'Gardens Branch',
-            bankBranch: 'Gardens Branch',
-            bankName: 'Bank A',
-            ifscCode: 'Andhra Pradesh',
-            organizationId: 'Gardens Branch',
-            bankBranchSolId: 'Gardens Branch',
-            campusId: 'HYD2789191',
-            activeStatus: 'Active'
-        },
-        {
-            id: 'Andhra Pradesh',
-            accountId: 'Guntur',
-            accountName: 'Gardens Branch',
-            accountNumber: 'Gardens Branch',
-            accountType: 'Gardens Branch',
-            bankAddress: 'Gardens Branch',
-            bankBranch: 'Gardens Branch',
-            bankName: 'Bank A',
-            ifscCode: 'Andhra Pradesh',
-            organizationId: 'Gardens Branch',
-            bankBranchSolId: 'Gardens Branch',
-            campusId: 'HYD2789191',
-            activeStatus: 'Active'
-        },
-        {
-            id: 'Andhra Pradesh',
-            accountId: 'Guntur',
-            accountName: 'Gardens Branch',
-            accountNumber: 'Gardens Branch',
-            accountType: 'Gardens Branch',
-            bankAddress: 'Gardens Branch',
-            bankBranch: 'Gardens Branch',
-            bankName: 'Bank A',
-            ifscCode: 'Andhra Pradesh',
-            organizationId: 'Gardens Branch',
-            bankBranchSolId: 'Gardens Branch',
-            campusId: 'HYD2789191',
-            activeStatus: 'Active'
-        },
-        {
-            id: 'Andhra Pradesh',
-            accountId: 'Guntur',
-            accountName: 'Gardens Branch',
-            accountNumber: 'Gardens Branch',
-            accountType: 'Gardens Branch',
-            bankAddress: 'Gardens Branch',
-            bankBranch: 'Gardens Branch',
-            bankName: 'Bank A',
-            ifscCode: 'Andhra Pradesh',
-            organizationId: 'Gardens Branch',
-            bankBranchSolId: 'Gardens Branch',
-            campusId: 'HYD2789191',
-            activeStatus: 'Active'
-        },
-        {
-            id: 'Andhra Pradesh',
-            accountId: 'Guntur',
-            accountName: 'Gardens Branch',
-            accountNumber: 'Gardens Branch',
-            accountType: 'Gardens Branch',
-            bankAddress: 'Gardens Branch',
-            bankBranch: 'Gardens Branch',
-            bankName: 'Bank A',
-            ifscCode: 'Andhra Pradesh',
-            organizationId: 'Gardens Branch',
-            bankBranchSolId: 'Gardens Branch',
-            campusId: 'HYD2789191',
-            activeStatus: 'Active'
-        },
-        {
-            id: 'Andhra Pradesh',
-            accountId: 'Guntur',
-            accountName: 'Gardens Branch',
-            accountNumber: 'Gardens Branch',
-            accountType: 'Gardens Branch',
-            bankAddress: 'Gardens Branch',
-            bankBranch: 'Gardens Branch',
-            bankName: 'Bank A',
-            ifscCode: 'Andhra Pradesh',
-            organizationId: 'Gardens Branch',
-            bankBranchSolId: 'Gardens Branch',
-            campusId: 'HYD2789191',
-            activeStatus: 'Active'
-        },
-        {
-            id: 'Andhra Pradesh',
-            accountId: 'Guntur',
-            accountName: 'Gardens Branch',
-            accountNumber: 'Gardens Branch',
-            accountType: 'Gardens Branch',
-            bankAddress: 'Gardens Branch',
-            bankBranch: 'Gardens Branch',
-            bankName: 'Bank A',
-            ifscCode: 'Andhra Pradesh',
-            organizationId: 'Gardens Branch',
-            bankBranchSolId: 'Gardens Branch',
-            campusId: 'HYD2789191',
-            activeStatus: 'Active'
-        },
-        {
-            id: 'Andhra Pradesh',
-            accountId: 'Guntur',
-            accountName: 'Gardens Branch',
-            accountNumber: 'Gardens Branch',
-            accountType: 'Gardens Branch',
-            bankAddress: 'Gardens Branch',
-            bankBranch: 'Gardens Branch',
-            bankName: 'Bank A',
-            ifscCode: 'Andhra Pradesh',
-            organizationId: 'Gardens Branch',
-            bankBranchSolId: 'Gardens Branch',
-            campusId: 'HYD2789191',
-            activeStatus: 'Active'
-        },
-        {
-            id: 'Andhra Pradesh',
-            accountId: 'Guntur',
-            accountName: 'Gardens Branch',
-            accountNumber: 'Gardens Branch',
-            accountType: 'Gardens Branch',
-            bankAddress: 'Gardens Branch',
-            bankBranch: 'Gardens Branch',
-            bankName: 'Bank A',
-            ifscCode: 'Andhra Pradesh',
-            organizationId: 'Gardens Branch',
-            bankBranchSolId: 'Gardens Branch',
-            campusId: 'HYD2789191',
-            activeStatus: 'Active'
-        },
-        {
-            id: 'Andhra Pradesh',
-            accountId: 'Guntur',
-            accountName: 'Gardens Branch',
-            accountNumber: 'Gardens Branch',
-            accountType: 'Gardens Branch',
-            bankAddress: 'Gardens Branch',
-            bankBranch: 'Gardens Branch',
-            bankName: 'Bank A',
-            ifscCode: 'Andhra Pradesh',
-            organizationId: 'Gardens Branch',
-            bankBranchSolId: 'Gardens Branch',
-            campusId: 'HYD2789191',
-            activeStatus: 'Active'
-        },
-        {
-            id: 'Andhra Pradesh',
-            accountId: 'Guntur',
-            accountName: 'Gardens Branch',
-            accountNumber: 'Gardens Branch',
-            accountType: 'Gardens Branch',
-            bankAddress: 'Gardens Branch',
-            bankBranch: 'Gardens Branch',
-            bankName: 'Bank A',
-            ifscCode: 'Andhra Pradesh',
-            organizationId: 'Gardens Branch',
-            bankBranchSolId: 'Gardens Branch',
-            campusId: 'HYD2789191',
-            activeStatus: 'Active'
-        },
-        {
-            id: 'Andhra Pradesh',
-            accountId: 'Guntur',
-            accountName: 'Gardens Branch',
-            accountNumber: 'Gardens Branch',
-            accountType: 'Gardens Branch',
-            bankAddress: 'Gardens Branch',
-            bankBranch: 'Gardens Branch',
-            bankName: 'Bank A',
-            ifscCode: 'Andhra Pradesh',
-            organizationId: 'Gardens Branch',
-            bankBranchSolId: 'Gardens Branch',
-            campusId: 'HYD2789191',
-            activeStatus: 'Active'
-        }
-
-    ]);
+    const [tableData, setTableData] = useState([]);
     const [isEditMode, setIsEditMode] = useState(false);
-    const [editIndex, setEditIndex] = useState(null);
+    const [editAccountId, setEditAccountId] = useState(null);
 
-
+    // Fetch all organizations on component mount
+    useEffect(() => {
+        const fetchOrganizations = async () => {
+            try {
+                const response = await axios.get('http://localhost:8080/api/organizations/ListofAll');
+                setTableData(response.data);
+            } catch (error) {
+                console.error('Error fetching organizations:', error);
+            }
+        };
+        fetchOrganizations();
+    }, []);
 
     const handleAddNewClick = () => {
         setShowForm(true);
         setIsEditMode(false);
         setFormData(initialFormState);
+        setEditAccountId(null);
     };
 
     const handleCancel = () => {
         setShowForm(false);
         setFormData(initialFormState);
         setIsEditMode(false);
-        setEditIndex(null);
+        setEditAccountId(null);
     };
 
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };
 
-    const handleAddField = () => {
-        if (isEditMode) {
-            const updatedData = [...tableData];
-            updatedData[editIndex] = formData;
-            setTableData(updatedData);
-        } else {
-            setTableData([...tableData, formData]);
+    const handleAddField = async () => {
+        try {
+            if (isEditMode) {
+                // Update organization
+                if (!editAccountId) throw new Error("No account ID to update");
+                const response = await axios.put(`http://localhost:8080/api/organizations/${editAccountId}`, formData);
+                setTableData(tableData.map(item => item.accountId === editAccountId ? response.data : item));
+            } else {
+                // Create new organization
+                const response = await axios.post('http://localhost:8080/api/organizations/addOrganisation', formData);
+                setTableData([...tableData, response.data]);
+            }
+            handleCancel();
+        } catch (error) {
+            console.error('Error saving organization:', error);
         }
-        handleCancel();
     };
 
-    const handleViewClick = (index) => {
-        setFormData(tableData[index]);
-        setEditIndex(index);
-        setIsEditMode(true);
-        setShowForm(true);
+    const handleViewClick = async (accountId) => {
+        try {
+            if (!accountId) throw new Error("No account ID to fetch");
+            const response = await axios.get(`http://localhost:8080/api/organizations/${accountId}`);
+            setFormData(response.data);
+            setEditAccountId(accountId);
+            setIsEditMode(true);
+            setShowForm(true);
+        } catch (error) {
+            console.error('Error fetching organization:', error);
+        }
     };
 
-
-
+    const handleDeleteClick = async (accountId) => {
+        try {
+            if (!accountId) throw new Error("No account ID to delete");
+            await axios.delete(`http://localhost:8080/api/organizations/${accountId}`);
+            setTableData(tableData.filter(item => item.accountId !== accountId));
+            handleCancel();
+        } catch (error) {
+            console.error('Error deleting organization:', error);
+        }
+    };
 
     return (
         <div className="main-section">
             <div className="feeheads-container">
                 <h1 className="title">Organization</h1>
                 <div className="button-group">
-
                     <button className="action-btn-filter">
-
                         <svg width="65" height="24" viewBox="0 0 65 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <g clip-path="url(#clip0_4_34476)">
                                 <path fill-rule="evenodd" clip-rule="evenodd" d="M5 5C5 4.73478 5.10536 4.48043 5.29289 4.29289C5.48043 4.10536 5.73478 4 6 4H18C18.2652 4 18.5196 4.10536 18.7071 4.29289C18.8946 4.48043 19 4.73478 19 5V8C18.9999 8.26519 18.8946 8.51951 18.707 8.707L14 13.414V17C13.9999 17.2652 13.8945 17.5195 13.707 17.707L11.707 19.707C11.5671 19.8468 11.389 19.942 11.195 19.9806C11.0011 20.0192 10.8 19.9993 10.6173 19.9237C10.4346 19.848 10.2785 19.7199 10.1686 19.5555C10.0587 19.391 10 19.1978 10 19V13.414L5.293 8.707C5.10545 8.51951 5.00006 8.26519 5 8V5Z" fill="#5B6871" />
@@ -301,7 +121,7 @@ const FeeheadsBar = () => {
                         <svg width="76" height="24" viewBox="0 0 76 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <g clip-path="url(#clip0_4_34483)">
                                 <path fill-rule="evenodd" clip-rule="evenodd" d="M5.29303 11.7068C5.10556 11.5193 5.00024 11.265 5.00024 10.9998C5.00024 10.7346 5.10556 10.4803 5.29303 10.2928L11.293 4.29279C11.4806 4.10532 11.7349 4 12 4C12.2652 4 12.5195 4.10532 12.707 4.29279L18.707 10.2928C18.8892 10.4814 18.99 10.734 18.9877 10.9962C18.9854 11.2584 18.8803 11.5092 18.6948 11.6946C18.5094 11.88 18.2586 11.9852 17.9964 11.9875C17.7342 11.9897 17.4816 11.8889 17.293 11.7068L13 7.41379V18.9998C13 19.265 12.8947 19.5194 12.7071 19.7069C12.5196 19.8944 12.2652 19.9998 12 19.9998C11.7348 19.9998 11.4805 19.8944 11.2929 19.7069C11.1054 19.5194 11 19.265 11 18.9998V7.41379L6.70703 11.7068C6.5195 11.8943 6.26519 11.9996 6.00003 11.9996C5.73487 11.9996 5.48056 11.8943 5.29303 11.7068Z" fill="#5B6871" />
-                                <path d="M33.233 17H39.4574V15.9062H34.4659V12.446H39.0597V11.3523H34.4659V7.91193H39.3778V6.81818H33.233V17ZM42.2321 9.36364H40.8798L43.3059 13.1818L40.8798 17H42.2321L44.0616 14.0369L45.8911 17H47.2434L44.7775 13.1818L47.2434 9.36364H45.8911L44.0616 12.4858L42.2321 9.36364ZM48.8336 19.8636H50.0069V15.8267H50.1063C50.3648 16.2443 50.862 17.1591 52.3336 17.1591C54.2427 17.1591 55.5751 15.6278 55.5751 13.2017C55.5751 10.7955 54.2427 9.2642 52.3137 9.2642C50.8222 9.2642 50.3648 10.179 50.1063 10.5767H49.9671V9.36364H48.8336V19.8636ZM49.987 13.1818C49.987 11.4716 50.7427 10.3182 52.1745 10.3182C53.666 10.3182 54.4018 11.571 54.4018 13.1818C54.4018 14.8125 53.6461 16.1051 52.1745 16.1051C50.7626 16.1051 49.987 14.9119 49.987 13.1818ZM60.3831 17.1591C62.4513 17.1591 63.8433 15.5881 63.8433 13.2216C63.8433 10.8352 62.4513 9.2642 60.3831 9.2642C58.3149 9.2642 56.9229 10.8352 56.9229 13.2216C56.9229 15.5881 58.3149 17.1591 60.3831 17.1591ZM60.3831 16.1051C58.8121 16.1051 58.0962 14.7528 58.0962 13.2216C58.0962 11.6903 58.8121 10.3182 60.3831 10.3182C61.9541 10.3182 62.6701 11.6903 62.6701 13.2216C62.6701 14.7528 61.9541 16.1051 60.3831 16.1051ZM65.5504 17H66.7237V12.1676C66.7237 11.1335 67.539 10.3778 68.6526 10.3778C68.9658 10.3778 69.289 10.4375 69.3685 10.4574V9.2642C69.2343 9.25426 68.9261 9.24432 68.7521 9.24432C67.8373 9.24432 67.0418 9.76136 66.7634 10.517H66.6839V9.36364H65.5504V17ZM74.4749 9.36364H72.8442V7.53409H71.6709V9.36364H70.5175V10.358H71.6709V15.1307C71.6709 16.4631 72.7448 17.0994 73.7391 17.0994C74.1766 17.0994 74.455 17.0199 74.6141 16.9602L74.3755 15.9062C74.276 15.9261 74.1169 15.9659 73.8584 15.9659C73.3414 15.9659 72.8442 15.8068 72.8442 14.8125V10.358H74.4749V9.36364Z" fill="#252C32" />
+                                <path d="M33.233 17H39.4574V15.9062H34.4659V12.446H39.0597V11.3523H34.4659V7.91193H39.3778V6.81818H33.233V17ZM42.2321 9.36364H40.8798L43.3059 13.1818L40.8798 17H42.2321L44.0616 14.0369L45.8911 17H47.2434L44.7775 13.1818L47.2434 9.36364H45.8911L44.0616 12.4858L42.2321 9.36364ZM48.8336 19.8636H50.0069V15.8267H50.1063C50.3648 16.2443 50.862 17.1591 52.3336 17.1591C54.2427 17.1591 55.5751 15.6278 55.5751 13.2017C55.5751 10.7955 54.2427 9.2642 52.3137 9.2642C50.8222 9.2642 50.3648 10.179 50.1063 10.5767H49.9671V9.36364H48.8336V19.8636ZM49.987 13.1818C49.987 11.4716 50.7427 10.3182 52.1745 10.3182C53.666 10.3182 54.4018 11.571 54.4018 13.1818C54.4018 14.8125 53.6461 16.1051 52.1745 16.1051C50.7626 16.1051 49.987 14.9119 49.987 13.1818ZM60.3831 17.1591C62.4513 17.1591 63.8433 15.5881 63.8433 13.2216C63.8433 10.8352 62.4513 9.2642 60.3831 9.2642C58.3149 9.2642 56.9229 10.8352 56.9229 13.2216C56.9229 15.5881 58.3149 17.1591 60.3831 17.1591ZM60.3831 16.1051C58.8121 16.1051 58.0962 14.7528 58.0962 13.2216C58.0962 11.6903 58.8121 10.3182 60.3831 10.3182C61.9541 10.3182 62.6701 11.6903 62.6701 13.2216C62.6701 14.7528 61.9541 16.1051 60.3831 16.1051ZM65.5504 17H66.7237V12.1676C66.7237 11.1335 67.539 10.3778 68.6526 10.3778C68.9658 10.3771 69.289 10.4375 69.3685 10.4574V9.2642C69.2343 9.25426 68.9261 9.24432 68.7521 9.24432C67.8373 9.24432 67.0418 9.76136 66.7634 10.517H66.6839V9.36364H65.5504V17ZM74.4749 9.36364H72.8442V7.53409H71.6709V9.36364H70.5175V10.358H71.6709V15.1307C71.6709 16.4631 72.7448 17.0994 73.7391 17.0994C74.1766 17.0994 74.455 17.0199 74.6141 16.9602L74.3755 15.9062C74.276 15.9261 74.1169 15.9659 73.8584 15.9659C73.3414 15.9659 72.8442 15.8068 72.8442 14.8125V10.358H74.4749V9.36364Z" fill="#252C32" />
                             </g>
                             <defs>
                                 <clipPath id="clip0_4_34483">
@@ -309,7 +129,6 @@ const FeeheadsBar = () => {
                                 </clipPath>
                             </defs>
                         </svg>
-
                     </button>
                     <button className="action-btn-addnew" onClick={handleAddNewClick}>
                         <svg width="129" height="24" viewBox="0 0 129 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -323,7 +142,6 @@ const FeeheadsBar = () => {
                                 </clipPath>
                             </defs>
                         </svg>
-
                     </button>
                 </div>
             </div>
@@ -341,6 +159,7 @@ const FeeheadsBar = () => {
                             <th>BANK BRANCH</th>
                             <th>BANK NAME</th>
                             <th>IFSC CODE</th>
+                            <th>MICR CODE</th>
                             <th>ORGANIZATION ID</th>
                             <th>BANK BRANCH SOL ID</th>
                             <th>CAMPUS ID</th>
@@ -349,8 +168,8 @@ const FeeheadsBar = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        {tableData.map((row, index) => (
-                            <tr key={index} className="table-row">
+                        {tableData.map((row) => (
+                            <tr key={row.accountId} className="table-row">
                                 <td className="sticky-col-sticky-col-1"><input type="checkbox" /></td>
                                 <td>{row.accountId}</td>
                                 <td>{row.accountName}</td>
@@ -360,36 +179,35 @@ const FeeheadsBar = () => {
                                 <td>{row.bankBranch}</td>
                                 <td>{row.bankName}</td>
                                 <td>{row.ifscCode}</td>
+                                <td>{row.micrCode}</td>
                                 <td>{row.organizationId}</td>
                                 <td>{row.bankBranchSolId}</td>
                                 <td>{row.campusId}</td>
                                 <td>{row.activeStatus}</td>
                                 <td className="icons">
-                                    <button title="Delete" className="icon-btn" onClick={() => handleViewClick(index)}>
+                                    <button title="Delete" className="icon-btn" onClick={() => handleDeleteClick(row.accountId)}>
                                         <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                             <path d="M2.5 5.00033H4.16667M4.16667 5.00033H17.5M4.16667 5.00033V16.667C4.16667 17.109 4.34226 17.5329 4.65482 17.8455C4.96738 18.1581 5.39131 18.3337 5.83333 18.3337H14.1667C14.6087 18.3337 15.0326 18.1581 15.3452 17.8455C15.6577 17.5329 15.8333 17.109 15.8333 16.667V5.00033H4.16667ZM6.66667 5.00033V3.33366C6.66667 2.89163 6.84226 2.46771 7.15482 2.15515C7.46738 1.84259 7.89131 1.66699 8.33333 1.66699H11.6667C12.1087 1.66699 12.5326 1.84259 12.8452 2.15515C13.1577 2.46771 13.3333 2.89163 13.3333 3.33366V5.00033M8.33333 9.16699V14.167M11.6667 9.16699V14.167" stroke="#667085" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round" />
                                         </svg>
-
                                     </button>
-                                    <button title="Edit" className="icon-btn" onClick={() => handleViewClick(index)}><svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <g clip-path="url(#clip0_363_3927)">
-                                            <path d="M14.1665 2.49993C14.3854 2.28106 14.6452 2.10744 14.9312 1.98899C15.2171 1.87054 15.5236 1.80957 15.8332 1.80957C16.1427 1.80957 16.4492 1.87054 16.7352 1.98899C17.0211 2.10744 17.281 2.28106 17.4998 2.49993C17.7187 2.7188 17.8923 2.97863 18.0108 3.2646C18.1292 3.55057 18.1902 3.85706 18.1902 4.16659C18.1902 4.47612 18.1292 4.78262 18.0108 5.06859C17.8923 5.35455 17.7187 5.61439 17.4998 5.83326L6.24984 17.0833L1.6665 18.3333L2.9165 13.7499L14.1665 2.49993Z" stroke="#667085" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round" />
-                                        </g>
-                                        <defs>
-                                            <clipPath id="clip0_363_3927">
-                                                <rect width="20" height="20" fill="white" />
-                                            </clipPath>
-                                        </defs>
-                                    </svg>
+                                    <button title="Edit" className="icon-btn" onClick={() => handleViewClick(row.accountId)}>
+                                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <g clip-path="url(#clip0_363_3927)">
+                                                <path d="M14.1665 2.49993C14.3854 2.28106 14.6452 2.10744 14.9312 1.98899C15.2171 1.87054 15.5236 1.80957 15.8332 1.80957C16.1427 1.80957 16.4492 1.87054 16.7352 1.98899C17.0211 2.10744 17.281 2.28106 17.4998 2.49993C17.7187 2.7188 17.8923 2.97863 18.0108 3.2646C18.1292 3.55057 18.1902 3.85706 18.1902 4.16659C18.1902 4.47612 18.1292 4.78262 18.0108 5.06859C17.8923 5.35455 17.7187 5.61439 17.4998 5.83326L6.24984 17.0833L1.6665 18.3333L2.9165 13.7499L14.1665 2.49993Z" stroke="#667085" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round" />
+                                            </g>
+                                            <defs>
+                                                <clipPath id="clip0_363_3927">
+                                                    <rect width="20" height="20" fill="white" />
+                                                </clipPath>
+                                            </defs>
+                                        </svg>
                                     </button>
-                                    <button title="View" className="icon-btn" onClick={() => handleViewClick(index)}>
+                                    <button title="View" className="icon-btn" onClick={() => handleViewClick(row.accountId)}>
                                         <svg width="48" height="16" viewBox="0 0 48 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                                             <path d="M14.8628 7.36301C15.0655 7.64701 15.1668 7.78967 15.1668 7.99967C15.1668 8.21034 15.0655 8.35234 14.8628 8.63634C13.9522 9.91367 11.6262 12.6663 8.50016 12.6663C5.3735 12.6663 3.04816 9.91301 2.1375 8.63634C1.93483 8.35234 1.8335 8.20967 1.8335 7.99967C1.8335 7.78901 1.93483 7.64701 2.1375 7.36301C3.04816 6.08567 5.37416 3.33301 8.50016 3.33301C11.6268 3.33301 13.9522 6.08634 14.8628 7.36301Z" stroke="#7B7B7B" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round" />
                                             <path d="M10.5 8C10.5 7.46957 10.2893 6.96086 9.91421 6.58579C9.53914 6.21071 9.03043 6 8.5 6C7.96957 6 7.46086 6.21071 7.08579 6.58579C6.71071 6.96086 6.5 7.46957 6.5 8C6.5 8.53043 6.71071 9.03914 7.08579 9.41421C7.46086 9.78929 7.96957 10 8.5 10C9.03043 10 9.53914 9.78929 9.91421 9.41421C10.2893 9.03914 10.5 8.53043 10.5 8Z" stroke="#7B7B7B" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round" />
                                             <path d="M20.9148 4.27273L23.5057 11.6193H23.608L26.1989 4.27273H27.3068L24.1023 13H23.0114L19.8068 4.27273H20.9148ZM28.5298 13V6.45455H29.5355V13H28.5298ZM29.0412 5.36364C28.8452 5.36364 28.6761 5.29688 28.5341 5.16335C28.3949 5.02983 28.3253 4.86932 28.3253 4.68182C28.3253 4.49432 28.3949 4.33381 28.5341 4.20028C28.6761 4.06676 28.8452 4 29.0412 4C29.2372 4 29.4048 4.06676 29.544 4.20028C29.6861 4.33381 29.7571 4.49432 29.7571 4.68182C29.7571 4.86932 29.6861 5.02983 29.544 5.16335C29.4048 5.29688 29.2372 5.36364 29.0412 5.36364ZM34.1218 13.1364C33.4911 13.1364 32.9471 12.9972 32.4897 12.7188C32.0352 12.4375 31.6843 12.0455 31.4371 11.5426C31.1928 11.0369 31.0707 10.4489 31.0707 9.77841C31.0707 9.10795 31.1928 8.51705 31.4371 8.00568C31.6843 7.49148 32.0281 7.09091 32.4684 6.80398C32.9116 6.5142 33.4286 6.36932 34.0195 6.36932C34.3604 6.36932 34.6971 6.42614 35.0295 6.53977C35.3619 6.65341 35.6644 6.83807 35.9371 7.09375C36.2099 7.34659 36.4272 7.68182 36.5891 8.09943C36.7511 8.51705 36.832 9.03125 36.832 9.64205V10.0682H31.7866V9.19886H35.8093C35.8093 8.82955 35.7354 8.5 35.5877 8.21023C35.4428 7.92045 35.2354 7.69176 34.9656 7.52415C34.6985 7.35653 34.3832 7.27273 34.0195 7.27273C33.619 7.27273 33.2724 7.37216 32.9798 7.57102C32.69 7.76705 32.467 8.02273 32.3107 8.33807C32.1545 8.65341 32.0763 8.99148 32.0763 9.35227V9.93182C32.0763 10.4261 32.1616 10.8452 32.332 11.1889C32.5053 11.5298 32.7454 11.7898 33.0522 11.9688C33.359 12.1449 33.7156 12.233 34.1218 12.233C34.386 12.233 34.6246 12.196 34.8377 12.1222C35.0536 12.0455 35.2397 11.9318 35.396 11.7812C35.5522 11.6278 35.6729 11.4375 35.7582 11.2102L36.7298 11.483C36.6275 11.8125 36.4556 12.1023 36.2141 12.3523C35.9727 12.5994 35.6744 12.7926 35.3192 12.9318C34.9641 13.0682 34.565 13.1364 34.1218 13.1364ZM39.8448 13L37.8505 6.45455H38.9073L40.3221 11.4659H40.3903L41.788 6.45455H42.8619L44.2425 11.4489H44.3107L45.7255 6.45455H46.7823L44.788 13H43.7994L42.3675 7.97159H42.2653L40.8335 13H39.8448Z" fill="#7B7B7B" />
                                         </svg>
-
-
                                     </button>
                                 </td>
                             </tr>
@@ -398,16 +216,17 @@ const FeeheadsBar = () => {
                 </table>
             </div>
 
-
-
             {showForm && (
                 <>
                     <div className="overlay"></div>
                     <div className="form-popup">
                         <h3>{isEditMode ? "Edit" : "Add New Field"}</h3>
-                        <button className="close-btn" onClick={handleCancel}>×</button>
-                        <form className="feeheads-form">
-                            {/* Account Fields */}
+                        <button className="close-btn" onClick={handleCancel}>
+                            <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M9 8.75L21.5 21.25M9 21.25L21.5 8.75" stroke="black" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </button>
+                        <div className="feeheads-form">
                             <label>
                                 <span>Account Id</span>
                                 <input
@@ -417,6 +236,7 @@ const FeeheadsBar = () => {
                                     value={formData.accountId}
                                     onChange={handleChange}
                                     placeholder="Enter Account Id"
+                                    disabled={isEditMode} // Prevent editing accountId in edit mode since it's the ID
                                 />
                             </label>
                             <label>
@@ -452,7 +272,6 @@ const FeeheadsBar = () => {
                                     placeholder="Enter Account Type"
                                 />
                             </label>
-                            {/* Bank Fields */}
                             <label>
                                 <span>Bank Address</span>
                                 <input
@@ -497,7 +316,17 @@ const FeeheadsBar = () => {
                                     placeholder="Enter Ifsc Code"
                                 />
                             </label>
-                            {/* Organization Fields */}
+                            <label>
+                                <span>Micr Code</span>
+                                <input
+                                    type="text"
+                                    className="input-micrCode"
+                                    name="micrCode"
+                                    value={formData.micrCode}
+                                    onChange={handleChange}
+                                    placeholder="Enter Micr Code"
+                                />
+                            </label>
                             <label>
                                 <span>Organization Id</span>
                                 <input
@@ -551,11 +380,7 @@ const FeeheadsBar = () => {
                                 {isEditMode && (
                                     <button
                                         type="button"
-                                        onClick={() => {
-                                            const updatedData = tableData.filter((_, idx) => idx !== editIndex);
-                                            setTableData(updatedData);
-                                            handleCancel();
-                                        }}
+                                        onClick={() => handleDeleteClick(editAccountId)}
                                         className="delete-btn"
                                     >
                                         Delete
@@ -565,7 +390,7 @@ const FeeheadsBar = () => {
                                     {isEditMode ? "Edit" : "Add New Field"}
                                 </button>
                             </div>
-                        </form>
+                        </div>
                     </div>
                 </>
             )}
