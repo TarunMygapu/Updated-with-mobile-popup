@@ -18,7 +18,7 @@ const initialFormState = {
     activeStatus: ''
 };
 
-const FeeheadsBar = () => {
+const Organization = () => {
     const [showForm, setShowForm] = useState(false);
     const [formData, setFormData] = useState(initialFormState);
     const [tableData, setTableData] = useState([]);
@@ -398,4 +398,4 @@ const FeeheadsBar = () => {
     );
 };
 
-export default FeeheadsBar;
+export default Organization;
